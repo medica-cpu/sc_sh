@@ -4,22 +4,23 @@ const $ = id => document.getElementById(id);
 const DAY_NAMES=["ПН","ВТ","СР","ЧТ","ПТ","СБ","ВС"];
 const LONG_DAYS=["Понедельник","Вторник","Среда","Четверг","Пятница","Суббота","Воскресенье"];
 const MODE={lift:{label:"RF × EMS LIFT",tag:"RF",minutes:6,symbol:"RF",subtitle:"Лифтинг и мышечная стимуляция",kind:"rf"},pump:{label:"RF PUMP",tag:"RF",minutes:6,symbol:"RF",subtitle:"RF-уход",kind:"rf"},eye:{label:"EYE CARE",tag:"EYE",minutes:2,symbol:"EYE",subtitle:"Уход за областью вокруг глаз",kind:"eye"},rest:{label:"Восстановление",tag:"УХОД",minutes:0,symbol:"✧",subtitle:"Ежедневный уход без специального режима",kind:"rest"}};
+const DAILY_COMPLIMENTS=['Твоя улыбка умеет делать день светлее.', 'В тебе удивительно красиво сочетаются нежность и сила.', 'Твоя доброта — настоящее украшение.', 'Ты заслуживаешь самого бережного отношения к себе.', 'В твоём присутствии становится теплее.', 'Твоя естественность — твоя особенная прелесть.', 'Ты умеешь находить красоту в простых моментах.', 'Твоя внутренняя гармония заметна даже в мелочах.', 'Ты прекрасна не только в особенные дни, но и в обычные.', 'Твоя искренность делает тебя особенной.', 'В тебе есть тихое очарование, которое запоминается.', 'Ты достойна заботы не за достижения, а просто потому, что ты есть.', 'Твоя улыбка — маленькое чудо этого дня.', 'Ты умеешь вдохновлять своим примером.', 'Твоя мягкость совсем не отменяет твою силу.', 'У тебя замечательный вкус к жизни.', 'Ты заслуживаешь времени, которое посвящаешь себе.', 'Твоё спокойствие — очень красивое качество.', 'Ты умеешь делать мир вокруг чуть добрее.', 'В тебе есть особая элегантность — в словах и поступках.', 'Твоя любознательность делает тебя ещё интереснее.', 'Ты прекрасна своей неповторимостью.', 'Твоя забота о себе — достойный повод для гордости.', 'Ты умеешь замечать детали, которые другие пропускают.', 'В тебе много света, даже когда день непростой.', 'Твоя уверенность растёт с каждым добрым выбором в свою пользу.', 'Ты заслуживаешь комплиментов и без всякого повода.', 'Твоя нежность к миру начинается с нежности к себе.', 'Ты умеешь сочетать рассудительность и лёгкость.', 'Твоё чувство юмора — отдельное очарование.', 'Ты гораздо сильнее, чем иногда думаешь.', 'Твоя индивидуальность — твоя настоящая изюминка.', 'Ты умеешь превращать заботу в красивый ритуал.', 'В тебе есть редкое качество — быть собой без лишнего шума.', 'Твоя энергия способна вдохновлять.', 'Ты достойна красивых слов, тёплых встреч и спокойных вечеров.', 'Твоя внимательность к близким очень ценна.', 'Ты умеешь быть опорой и при этом оставаться нежной.', 'Твоя улыбка — прекрасный аксессуар на каждый день.', 'Ты достойна того, чтобы выбирать себя без чувства вины.', 'В тебе есть благородство, которое не нуждается в доказательствах.', 'Ты умеешь создавать вокруг себя уют.', 'Твоя смелость проявляется даже в маленьких шагах.', 'Ты интересная, глубокая и по-своему волшебная.', 'Твоя доброжелательность делает встречи приятнее.', 'Ты заслуживаешь отдыха так же, как и успеха.', 'В тебе красиво сочетаются ум, чувство меры и обаяние.', 'Ты умеешь начинать заново — и это большая сила.', 'Твоя открытость миру делает жизнь ярче.', 'Ты достойна любви, уважения и бережного отношения.', 'У тебя есть свой неповторимый стиль — и в нём твоя прелесть.', 'Твоя деликатность — настоящее искусство.', 'Ты умеешь вдохновлять не словами, а самим отношением к жизни.', 'Твои маленькие победы тоже заслуживают праздника.', 'В тебе есть особенная женственность без всяких правил.', 'Ты прекрасна, когда смеёшься, мечтаешь и остаёшься собой.', 'Твоя внимательность к себе — проявление мудрости.', 'Ты умеешь привносить тепло даже в обычный разговор.', 'Твоя сила может быть спокойной — и от этого не становится меньше.', 'Ты заслуживаешь дня, в котором будет место только приятному.', 'В тебе есть лёгкость, которая располагает к себе.', 'Ты умеешь видеть возможности там, где другие видят препятствия.', 'Твоё мнение важно, а твой голос достоин быть услышанным.', 'Ты достойна гордиться тем, какой путь уже прошла.', 'Твоя чуткость — красивое и редкое качество.', 'Ты умеешь быть сильной и просить о поддержке — это тоже сила.', 'В тебе есть очарование, которое не зависит от настроения.', 'Ты заслуживаешь нежности в каждом дне.', 'Твоя способность радоваться мелочам делает жизнь богаче.', 'Ты умеешь выбирать то, что приносит тебе спокойствие.', 'Твоя искра чувствуется даже через экран.', 'Ты красива своей историей, характером и мечтами.', 'Твой интерес к новому делает тебя ещё ярче.', 'Ты достойна пространства для своих желаний.', 'Твоя улыбка умеет поддержать лучше многих слов.', 'В тебе есть удивительное сочетание практичности и мечтательности.', 'Ты умеешь создавать красоту вокруг себя.', 'Твои старания имеют значение, даже если их никто не заметил.', 'Ты заслуживаешь говорить с собой так же ласково, как с подругой.', 'Твоя самостоятельность вызывает уважение.', 'Ты прекрасна не по чьим-то меркам, а по праву быть собой.', 'В тебе есть спокойная уверенность, которая притягивает.', 'Ты умеешь делать выбор в пользу своего благополучия.', 'Твоя душевная щедрость делает мир добрее.', 'Ты можешь гордиться своей стойкостью.', 'Твоя способность учиться и меняться восхищает.', 'Ты заслуживаешь приятных сюрпризов и добрых новостей.', 'В тебе есть лёгкость, которая делает даже будни особенными.', 'Ты умеешь быть внимательной, не забывая о себе.', 'Твоё присутствие может стать чьим-то счастливым моментом.', 'Ты достойна любви без условий и заботы без напоминаний.', 'Твоя внутренняя красота проявляется в каждом добром поступке.', 'Ты умеешь сохранять достоинство и тепло одновременно.', 'Твоя способность мечтать — прекрасный источник энергии.', 'Ты заслуживаешь самого красивого отношения — в том числе от себя.', 'В тебе есть талант превращать обычное в особенное.', 'Ты умеешь находить свой темп — и это мудро.', 'Твоя честность с собой заслуживает уважения.', 'Ты прекрасна в своём собственном ритме.', 'Ты уже достаточно хороша — сегодня не нужно ничего доказывать.', 'Пусть сегодня ты увидишь в себе столько же хорошего, сколько видят близкие.', 'Ты — прекрасная причина сделать этот вечер чуть нежнее.'];
 const DEFAULT_PLAN=["lift","rest","eye","rest","pump","rest","eye"];
-const DEFAULT={version:2,plan:DEFAULT_PLAN,completed:{},stepChecks:{},notes:{},time:"21:00",goal:{name:"",date:""},lastNotification:""};
+const DEFAULT={version:5,plan:DEFAULT_PLAN,completed:{},stepChecks:{},notes:{},time:"21:00",goal:{name:"",date:""},lastNotification:"",videoUrl:"",complimentDate:"",complimentIndex:-1};
 const STORAGE="ehsr90-planner-v2";
 let data=loadData();
 let currentScreen="today";
 let selectedDay=(new Date().getDay()+6)%7;
 let selectedHistoryDate=localDateKey(new Date());
 let monthCursor=new Date(new Date().getFullYear(),new Date().getMonth(),1,12);
-let guideSteps=[],guideIndex=0,guideRemaining=0,guideInterval=null,guideRunning=false;
+let guideSteps=[],guideIndex=0,guideRemaining=0,guideInterval=null,guideRunning=false,guideEndsAt=null;
 let reminderInterval=null,toastTimer=null;
 
 function clone(obj){return JSON.parse(JSON.stringify(obj));}
 function loadData(){
   try{
     const current=localStorage.getItem(STORAGE);
-    if(current){const parsed=JSON.parse(current);const validPlan=Array.isArray(parsed.plan)&&parsed.plan.length===7&&parsed.plan.every(x=>["rest","lift","pump","eye"].includes(x));return {...clone(DEFAULT),...parsed,plan:validPlan?parsed.plan:clone(DEFAULT_PLAN),completed:parsed.completed||{},stepChecks:parsed.stepChecks||{},notes:parsed.notes||{},goal:parsed.goal||{name:"",date:""}};}
+    if(current){const parsed=JSON.parse(current);const validPlan=Array.isArray(parsed.plan)&&parsed.plan.length===7&&parsed.plan.every(x=>["rest","lift","pump","eye"].includes(x));return {...clone(DEFAULT),...parsed,version:5,plan:validPlan?parsed.plan:clone(DEFAULT_PLAN),completed:parsed.completed||{},stepChecks:parsed.stepChecks||{},notes:parsed.notes||{},goal:parsed.goal||{name:"",date:""}};}
     // Migrate the first PWA version without discarding its checkmarks and notes.
     const old=localStorage.getItem("ehsr90-planner-v1");
     if(old){const parsed=JSON.parse(old);return {...clone(DEFAULT),completed:parsed.done||{},notes:Object.fromEntries(Object.entries(parsed.notes||{}).map(([k,v])=>[k,typeof v==="string"?{text:v,feeling:""}:v])),time:parsed.time||"21:00"};}
@@ -37,12 +38,16 @@ function modeForDay(i){return MODE[data.plan[i]]||MODE.rest;}
 function isSpecial(code){return code!=="rest";}
 function dateFmt(d,opts={weekday:"long",day:"numeric",month:"long"}){return new Intl.DateTimeFormat("ru-RU",opts).format(d);}
 function showToast(message){const node=$("toast");node.textContent=message;node.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>node.classList.remove("show"),2600);}
-function switchScreen(screen){currentScreen=screen;document.querySelectorAll(".screen").forEach(el=>el.classList.toggle("active",el.id===`screen-${screen}`));document.querySelectorAll(".nav-item").forEach(el=>el.classList.toggle("active",el.dataset.screen===screen));if(screen==="today")renderToday();if(screen==="plan")renderPlan();if(screen==="history")renderHistory();if(screen==="settings")renderSettings();window.scrollTo({top:0,behavior:"smooth"});}
+function switchScreen(screen){currentScreen=screen;document.querySelectorAll(".screen").forEach(el=>el.classList.toggle("active",el.id===`screen-${screen}`));document.querySelectorAll(".nav-item").forEach(el=>el.classList.toggle("active",el.dataset.screen===screen));if(screen==="today")renderToday();if(screen==="plan")renderPlan();if(screen==="history")renderHistory();if(screen==="settings")renderSettings();if(screen==="technique")renderTechnique();window.scrollTo({top:0,behavior:"smooth"});}
 function stepsForDay(i){
-  const code=data.plan[i],steps=[{id:"prep",title:"Снять макияж и умыться",detail:"Подготовить чистую кожу",minutes:0,short:"Подготовка"},{id:"clean",title:"CLEAN",detail:"Sesderma SENSYSES Classic · ватный диск",minutes:3,short:"Очищение"},{id:"moist",title:"MOIST",detail:"Sesderma C-VIT5",minutes:3,short:"Увлажняющий уход"}];
-  if(code==="lift")steps.push({id:"special",title:"RF × EMS LIFT",detail:"Panasonic EH-4R06 · начать с уровня EMS 1",minutes:6,short:"Специальный режим"});
-  if(code==="pump")steps.push({id:"special",title:"RF PUMP",detail:"Сыворотка или эмульсия по инструкции Panasonic",minutes:6,short:"Специальный режим"});
-  if(code==="eye")steps.push({id:"special",title:"EYE CARE",detail:"MT Metatron B5 Contour тонким слоем как средство для процедуры — только если упаковка разрешает область вокруг глаз; не обрабатывать веки",minutes:2,short:"Специальный режим"});
+  const code=data.plan[i],steps=[
+    {id:"prep",title:"Снять макияж и умыться",detail:"Подготовить чистую кожу",minutes:0,short:"Подготовка"},
+    {id:"clean",title:"CLEAN",detail:"Sesderma SENSYSES Classic · ватный диск",minutes:3,short:"Очищение",movementPace:"На одну стрелку: ①–③ — около 7 с; ④ — около 5 с; ⑤–⑧ — около 3 с.",movementNote:"Таймер 03:00 — общая длительность режима CLEAN. В середине прибор подаст два длинных сигнала: перейди на другую половину лица. Время 7/5/3 секунды относится к темпу одного движения по стрелке, а не к длительности всего режима."},
+    {id:"moist",title:"MOIST",detail:"Sesderma C-VIT5",minutes:3,short:"Увлажняющий уход",movementPace:"На одну стрелку: ①–③ — около 7 с; ④–⑦ — около 3 с.",movementNote:"Таймер 03:00 — общая длительность режима MOIST. В середине прибор подаст два длинных сигнала: перейди на другую половину лица. Время 7/3 секунды относится к темпу одного движения по стрелке, а не к длительности всего режима."}
+  ];
+  if(code==="lift")steps.push({id:"special",title:"RF × EMS LIFT",detail:"Panasonic EH-4R06 · начать с уровня EMS 1",minutes:6,short:"Специальный режим",movementPace:"На одну стрелку: ①–⑦ — около 7 с; ⑧–⑩ — около 3 с.",movementNote:"Таймер 06:00 — общая длительность режима, а не 6 секунд и не время одного движения. В середине процедуры прибор подаст два длинных сигнала: перейди на другую половину лица. Время 7/3 секунды — ориентир темпа для каждой стрелки; проходи стрелки по порядку ①–⑩, не задерживай головку на месте."});
+  if(code==="pump")steps.push({id:"special",title:"RF PUMP",detail:"Сыворотка или эмульсия по инструкции Panasonic",minutes:6,short:"Специальный режим",movementPace:"На одну стрелку: ①–⑦ — около 7 с; ⑧–⑩ — около 3 с.",movementNote:"Таймер 06:00 — общая длительность режима, а не 6 секунд и не время одного движения. В середине процедуры прибор подаст два длинных сигнала: перейди на другую половину лица. Время 7/3 секунды — ориентир темпа для каждой стрелки; проходи стрелки по порядку ①–⑩, не задерживай головку на месте."});
+  if(code==="eye")steps.push({id:"special",title:"EYE CARE",detail:"MT Metatron B5 Contour тонким слоем как средство для процедуры — только если упаковка разрешает область вокруг глаз; не обрабатывать веки",minutes:2,short:"Специальный режим",movementPace:"На каждую стрелку — около 5 секунд.",movementNote:"Таймер 02:00 — общая длительность EYE CARE. Время около 5 секунд относится к одному движению по стрелке. Двигайся по схеме Panasonic; веки обрабатывать нельзя."});
   steps.push({id:"finish",title:"Завершающий уход",detail:code==="eye"?"Не наноси повторно тот же крем толстым слоем; при необходимости добавь только привычное средство, разрешённое для этой зоны.":"Нанести MT Metatron B5 Contour как завершающий крем.",minutes:0,short:"Финальный уход"});
   return steps;
 }
@@ -50,7 +55,17 @@ function checkKey(dateKey,id){return `${dateKey}|${id}`;}
 function stepDone(dateKey,id){return !!data.stepChecks[checkKey(dateKey,id)];}
 function setStepDone(dateKey,id,value){if(value)data.stepChecks[checkKey(dateKey,id)]=true;else{delete data.stepChecks[checkKey(dateKey,id)];delete data.completed[dateKey];}if(value&&stepsForDay(selectedDay).every(step=>stepDone(dateKey,step.id)))data.completed[dateKey]=true;persist();}
 function completed(dateKey){return !!data.completed[dateKey];}
-function renderHeader(){const now=new Date();$("headerDate").textContent=new Intl.DateTimeFormat("ru-RU",{day:"numeric",month:"short"}).format(now);}
+function getDailyCompliment(){
+  const today=localDateKey(new Date());
+  if(data.complimentDate!==today||!Number.isInteger(data.complimentIndex)||data.complimentIndex<0||data.complimentIndex>=DAILY_COMPLIMENTS.length){
+    const previous=data.complimentIndex;
+    let next=Math.floor(Math.random()*DAILY_COMPLIMENTS.length);
+    if(DAILY_COMPLIMENTS.length>1&&next===previous)next=(next+1+Math.floor(Math.random()*(DAILY_COMPLIMENTS.length-1)))%DAILY_COMPLIMENTS.length;
+    data.complimentDate=today;data.complimentIndex=next;persist();
+  }
+  return DAILY_COMPLIMENTS[data.complimentIndex];
+}
+function renderHeader(){const now=new Date();$("headerDate").textContent=new Intl.DateTimeFormat("ru-RU",{day:"numeric",month:"short"}).format(now);$("dailyCompliment").textContent=getDailyCompliment();}
 function renderWeekStrip(){const grid=$("weekStrip");grid.innerHTML="";const keys=weekDateKeys();const todayKey=localDateKey(new Date());keys.forEach((key,i)=>{const d=parseLocalDate(key),m=modeForDay(i),b=document.createElement("button");b.type="button";b.className="week-day"+(selectedDay===i?" selected":"")+(key===todayKey?" today":"")+(completed(key)?" done":"");b.innerHTML=`<span class="dow">${DAY_NAMES[i]}</span><span class="num">${d.getDate()}</span><span class="tag">${m.tag}</span>`;b.addEventListener("click",()=>{stopGuideTimer();selectedDay=i;renderToday();});grid.appendChild(b);});}
 function renderToday(){
  const now=new Date(),key=selectedDateKey(),mode=modeForDay(selectedDay),steps=stepsForDay(selectedDay),done=completed(key),checks=steps.filter(s=>stepDone(key,s.id)).length;
@@ -88,13 +103,50 @@ function renderHistory(){
 function renderMonth(){const y=monthCursor.getFullYear(),m=monthCursor.getMonth();$("monthLabel").textContent=new Intl.DateTimeFormat("ru-RU",{month:"long",year:"numeric"}).format(monthCursor);const first=new Date(y,m,1,12),offset=(first.getDay()+6)%7,start=addDays(first,-offset),grid=$("monthGrid");grid.innerHTML="";for(let i=0;i<42;i++){const d=addDays(start,i),key=localDateKey(d),b=document.createElement("button");b.type="button";b.className="calendar-day"+(d.getMonth()!==m?" outside":"")+(key===selectedHistoryDate?" selected":"")+(completed(key)?" done":"");const dayIdx=(d.getDay()+6)%7;if(d.getMonth()===m&&isSpecial(data.plan[dayIdx]))b.classList.add("planned");b.textContent=d.getDate();b.addEventListener("click",()=>{selectedHistoryDate=key;renderMonth();renderNote();});grid.appendChild(b);}}
 function renderNote(){const note=data.notes[selectedHistoryDate]||{};$("noteDateTitle").textContent=dateFmt(parseLocalDate(selectedHistoryDate),{day:"numeric",month:"long",year:"numeric"});$("noteDatePill").textContent=completed(selectedHistoryDate)?"Уход выполнен":"Без отметки";$("skinNote").value=note.text||"";document.querySelectorAll("#feelingOptions button").forEach(b=>b.classList.toggle("active",b.dataset.feeling===(note.feeling||"")));$("noteStatus").textContent="";}
 function renderBars(){const bars=$("weekBars");bars.innerHTML="";const today=new Date();for(let i=6;i>=0;i--){const d=addDays(today,-i),key=localDateKey(d),col=document.createElement("div");col.className="bar-column";const bar=document.createElement("div");bar.className="bar"+(completed(key)?" active":"");bar.style.height=completed(key)?"72%":"5%";const small=document.createElement("small");small.textContent=DAY_NAMES[(d.getDay()+6)%7];col.append(bar,small);bars.appendChild(col);}}
-function renderSettings(){ $("reminderTime").value=data.time||"21:00";$("goalName").value=data.goal?.name||"";$("goalDate").value=data.goal?.date||"";updatePermissionStatus();}
+function renderSettings(){ $("reminderTime").value=data.time||"21:00";$("goalName").value=data.goal?.name||"";$("goalDate").value=data.goal?.date||"";$("hostedVideoUrl").value=data.videoUrl||"";updatePermissionStatus();}
 function guideForSelectedDay(){const steps=stepsForDay(selectedDay);return steps.map(s=>({...s,description:s.detail||s.short}));}
 function openGuide(){guideSteps=guideForSelectedDay();guideIndex=0;stopGuideTimer();showGuideStep();$("guideDialog").showModal();}
-function showGuideStep(){const s=guideSteps[guideIndex];if(!s)return;guideRemaining=s.minutes||0;$("guideCount").textContent=`ЭТАП ${guideIndex+1} ИЗ ${guideSteps.length}`;$("guideTitle").textContent=s.title;$("guideDescription").textContent=s.description;$("guideTimer").textContent=s.minutes?formatTime(guideRemaining):"—";$("guideStart").disabled=!s.minutes;$("guideStart").textContent=s.minutes?"Старт таймера":"Без таймера";$("guideHint").textContent=s.id==="special"&&data.plan[selectedDay]==="lift"?"Начинай с уровня EMS 1. Двигай головку постоянно, не задерживай на месте.":s.id==="special"&&data.plan[selectedDay]==="eye"?"Не обрабатывай веки. Следуй схеме EYE CARE из инструкции.":s.id==="special"&&data.plan[selectedDay]==="pump"?"Используй сыворотку или эмульсию, предусмотренную инструкцией Panasonic.":"Сверяйся с инструкцией прибора и не продолжай при раздражении.";}
+function showGuideStep(){
+ const s=guideSteps[guideIndex];if(!s)return;
+ // `minutes` in the routine data is always minutes. The interval timer works in seconds.
+ // Multiplying here prevents 6 minutes from being displayed as 6 seconds.
+ guideRemaining=s.minutes?Math.round(s.minutes*60):0;
+ $("guideCount").textContent=`ЭТАП ${guideIndex+1} ИЗ ${guideSteps.length}`;
+ $("guideTitle").textContent=s.title;
+ $("guideDescription").textContent=s.description;
+ $("guideTimer").textContent=s.minutes?formatTime(guideRemaining):"—";
+ $("guideTimerCaption").hidden=!s.minutes;
+ $("guideTimerCaption").textContent=s.id==="special"?"ОБЩАЯ ДЛИТЕЛЬНОСТЬ РЕЖИМА":"ВРЕМЯ ЭТАПА";
+ $("guideStart").disabled=!s.minutes;
+ $("guideStart").textContent=s.minutes?"Старт таймера":"Без таймера";
+ const pace=$("guideMovementPace"),paceText=$("guideMovementPaceText"),note=$("guideHint");
+ if(s.movementPace){pace.hidden=false;paceText.textContent=s.movementPace;note.textContent=s.movementNote||"Время на стрелку — ориентир для одного движения, это не общая длительность режима.";}
+ else{pace.hidden=true;paceText.textContent="";note.textContent="Сверяйся с инструкцией прибора. Не продолжай при раздражении, боли или выраженном дискомфорте.";}
+}
 function formatTime(s){return `${String(Math.floor(s/60)).padStart(2,"0")}:${String(s%60).padStart(2,"0")}`;}
-function stopGuideTimer(){if(guideInterval)clearInterval(guideInterval);guideInterval=null;guideRunning=false;if($("guideStart"))$("guideStart").textContent="Старт таймера";}
-function startGuideTimer(){const s=guideSteps[guideIndex];if(!s?.minutes)return;if(guideRunning){stopGuideTimer();return;}if(guideRemaining<=0)guideRemaining=s.minutes;guideRunning=true;$("guideStart").textContent="Пауза";guideInterval=setInterval(()=>{guideRemaining=Math.max(0,guideRemaining-1);$("guideTimer").textContent=formatTime(guideRemaining);if(guideRemaining===0){stopGuideTimer();$("guideStart").textContent="Готово";if(navigator.vibrate)navigator.vibrate([180,100,180]);}},1000);}
+function stopGuideTimer(){
+  if(guideRunning&&guideEndsAt)guideRemaining=Math.max(0,Math.ceil((guideEndsAt-Date.now())/1000));
+  if(guideInterval)clearInterval(guideInterval);guideInterval=null;guideRunning=false;guideEndsAt=null;
+  if($("guideStart"))$("guideStart").textContent="Старт таймера";
+}
+function tickGuideTimer(){
+  if(!guideRunning||!guideEndsAt)return;
+  guideRemaining=Math.max(0,Math.ceil((guideEndsAt-Date.now())/1000));
+  $("guideTimer").textContent=formatTime(guideRemaining);
+  if(guideRemaining===0){
+    if(guideInterval)clearInterval(guideInterval);guideInterval=null;guideRunning=false;guideEndsAt=null;
+    $("guideStart").textContent="Готово";
+    if(navigator.vibrate)navigator.vibrate([180,100,180]);
+  }
+}
+function startGuideTimer(){
+  const s=guideSteps[guideIndex];if(!s?.minutes)return;
+  if(guideRunning){stopGuideTimer();return;}
+  if(guideRemaining<=0)guideRemaining=Math.round(s.minutes*60);
+  guideRunning=true;guideEndsAt=Date.now()+guideRemaining*1000;
+  $("guideStart").textContent="Пауза";
+  guideInterval=setInterval(tickGuideTimer,250);tickGuideTimer();
+}
 function exportCalendar(){
  const time=data.time||"21:00",[hh,mm]=time.split(":").map(Number),now=new Date(),nowTime=now.getHours()*60+now.getMinutes(),todayIndex=(now.getDay()+6)%7,events=[];
  data.plan.forEach((code,i)=>{let daysAhead=(i-todayIndex+7)%7;if(daysAhead===0&&nowTime>hh*60+mm)daysAhead=7;const start=addDays(new Date(now.getFullYear(),now.getMonth(),now.getDate(),12),daysAhead);const date=localDateKey(start).replaceAll("-","");const mode=MODE[code];const details=stepsForDay(i).map(s=>`${s.title}${s.minutes?` — ${s.minutes} мин`:""}: ${s.detail}`).join("\n");const byday=["MO","TU","WE","TH","FR","SA","SU"][i];events.push(["BEGIN:VEVENT",`UID:ehsr90-${byday}-weekly@mybeautyroutine`,`DTSTAMP:${new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d{3}Z$/,"Z")}`,`DTSTART:${date}T${String(hh).padStart(2,"0")}${String(mm).padStart(2,"0")}00`,`DURATION:PT20M`,`TRANSP:TRANSPARENT`,`RRULE:FREQ=WEEKLY;BYDAY=${byday}`,`SUMMARY:${icsEscape(`Вечерний уход — ${mode.label}`)}`,`DESCRIPTION:${icsEscape(`Пора начать вечерний уход. Сегодня по плану: ${mode.label}. ${details}`)}`,"BEGIN:VALARM","TRIGGER:PT0M","ACTION:DISPLAY",`DESCRIPTION:${icsEscape(`Время ухода: ${mode.label}`)}`,"END:VALARM","END:VEVENT"].join("\r\n"));});
@@ -110,8 +162,72 @@ function checkReminder(){if(!data.time||!("Notification" in window)||Notificatio
 function scheduleReminderCheck(){if(reminderInterval)clearInterval(reminderInterval);checkReminder();reminderInterval=setInterval(checkReminder,15000);}
 function saveHistoryNote(){const selected=document.querySelector("#feelingOptions button.active")?.dataset.feeling||"";data.notes[selectedHistoryDate]={text:$("skinNote").value.trim(),feeling:selected};persist();$("noteStatus").textContent="Заметка сохранена на этом устройстве.";}
 function backupData(){downloadBlob(JSON.stringify(data,null,2),"EH-SR90-backup.json","application/json");}
-function importData(file){const reader=new FileReader();reader.onload=()=>{try{const parsed=JSON.parse(reader.result);if(!parsed||!Array.isArray(parsed.plan)||parsed.plan.length!==7||!parsed.plan.every(x=>["rest","lift","pump","eye"].includes(x))||validatePlan(parsed.plan)){throw new Error("Некорректный формат или расписание нарушает ограничения Panasonic.");}data={...clone(DEFAULT),...parsed};persist();renderAll();showToast("Данные восстановлены");}catch(e){showToast(e.message||"Не удалось прочитать файл");}};reader.readAsText(file);}
-function renderAll(){renderHeader();renderToday();renderPlan();renderHistory();renderSettings();}
+function importData(file){const reader=new FileReader();reader.onload=()=>{try{const parsed=JSON.parse(reader.result);if(!parsed||!Array.isArray(parsed.plan)||parsed.plan.length!==7||!parsed.plan.every(x=>["rest","lift","pump","eye"].includes(x))||validatePlan(parsed.plan)){throw new Error("Некорректный формат или расписание нарушает ограничения Panasonic.");}data={...clone(DEFAULT),...parsed,videoUrl:typeof parsed.videoUrl==="string"?parsed.videoUrl:""};persist();renderAll();showToast("Данные восстановлены");}catch(e){showToast(e.message||"Не удалось прочитать файл");}};reader.readAsText(file);}
+function parseHostedVideo(raw){
+  if(!raw)return null;
+  try{
+    const url=new URL(raw.trim());
+    if(url.protocol!=="https:")return null;
+    const host=url.hostname.toLowerCase().replace(/^www\./,"");
+    const path=url.pathname.toLowerCase();
+    const ext=path.match(/\.(mp4|m4v|mov|webm|m3u8)$/i)?.[1]?.toLowerCase();
+    if(ext){const mime=ext==="m3u8"?"application/vnd.apple.mpegurl":ext==="webm"?"video/webm":ext==="mov"?"video/quicktime":"video/mp4";return {kind:"file",url:url.href,mime};}
+    if(host==="youtu.be"){const id=url.pathname.split("/").filter(Boolean)[0];if(id)return {kind:"embed",url:`https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}`};}
+    if(host==="youtube.com"||host==="m.youtube.com"){
+      const id=url.searchParams.get("v");if(path==="/watch"&&id)return {kind:"embed",url:`https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}`};
+      const match=path.match(/^\/embed\/([a-zA-Z0-9_-]+)/);if(match)return {kind:"embed",url:`https://www.youtube-nocookie.com/embed/${encodeURIComponent(match[1])}`};
+    }
+    if(host==="rutube.ru"){const match=path.match(/^\/video\/([a-f0-9]+)/i);if(match)return {kind:"embed",url:`https://rutube.ru/play/embed/${encodeURIComponent(match[1])}`};if(path.startsWith("/play/embed/"))return {kind:"embed",url:url.href};}
+    if(host==="vimeo.com"){const match=path.match(/^\/(\d+)/);if(match)return {kind:"embed",url:`https://player.vimeo.com/video/${match[1]}`};}
+    if((host==="vk.com"||host==="vkvideo.ru"||host==="vk.ru")&&path.includes("video_ext.php"))return {kind:"embed",url:url.href};
+    return {kind:"link",url:url.href};
+  }catch(error){return null;}
+}
+function renderHostedVideo(){
+  const card=$("hostedVideoCard"),slot=$("hostedVideoContent");if(!card||!slot)return;slot.replaceChildren();
+  const parsed=parseHostedVideo(data.videoUrl||"");card.hidden=!data.videoUrl;if(!data.videoUrl)return;
+  if(!parsed){const warning=document.createElement("p");warning.className="small muted";warning.textContent="Ссылка не распознана. В настройках укажи публичный HTTPS-адрес видео.";slot.append(warning);return;}
+  if(parsed.kind==="file"){
+    const video=document.createElement("video");video.className="hosted-video-player";video.controls=true;video.playsInline=true;video.preload="metadata";
+    const source=document.createElement("source");source.src=parsed.url;source.type=parsed.mime;video.append(source);
+    const fallback=document.createElement("p");fallback.className="small muted";fallback.textContent="Если видео не запускается, проверь прямую ссылку и формат файла на видеохостинге.";slot.append(video,fallback);
+  }else if(parsed.kind==="embed"){
+    const frame=document.createElement("iframe");frame.className="hosted-video-frame";frame.src=parsed.url;frame.title="Размещённое обучающее видео";frame.loading="lazy";frame.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";frame.allowFullscreen=true;frame.referrerPolicy="strict-origin-when-cross-origin";slot.append(frame);
+  }else{
+    const note=document.createElement("p");note.className="small muted";note.textContent="Для этой площадки встроенный плеер не распознан. Видео откроется на странице хостинга.";
+    const link=document.createElement("a");link.className="official-link";link.href=parsed.url;link.target="_blank";link.rel="noopener noreferrer";link.textContent="Открыть загруженное видео ↗";slot.append(note,link);
+  }
+}
+function renderTechnique(){
+  renderHostedVideo();
+  // Each technique card loads its supplied YouTube video only after a deliberate tap.
+  document.querySelectorAll(".mode-video").forEach(panel=>{
+    const button=panel.querySelector(".mode-video-open");
+    if(!button || button.dataset.bound==="1") return;
+    button.dataset.bound="1";
+    button.addEventListener("click",()=>{
+      const id=panel.dataset.videoId;
+      const title=panel.dataset.videoTitle||"Видео техники";
+      if(!/^[A-Za-z0-9_-]{6,20}$/.test(id||"")){showToast("Не удалось распознать ссылку на видео");return;}
+      const frame=document.createElement("iframe");
+      frame.className="mode-video-player";
+      frame.src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(id)}?rel=0&playsinline=1`;
+      frame.title=`Видео техники: ${title}`;
+      frame.loading="lazy";
+      frame.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      frame.allowFullscreen=true;
+      frame.referrerPolicy="strict-origin-when-cross-origin";
+      panel.querySelector(".mode-video-preview")?.replaceWith(frame);
+      button.disabled=true;
+    });
+  });
+  // Official diagrams come directly from the Panasonic EH-SR90 instruction page.
+  document.querySelectorAll(".technique-card img:not([data-fallback-bound])").forEach(img=>{
+    img.dataset.fallbackBound="1";
+    img.addEventListener("error",()=>{img.alt="Не удалось загрузить схему Panasonic";img.style.display="none";const note=document.createElement("p");note.className="small muted";note.textContent="Не удалось загрузить изображение Panasonic. Открой официальную инструкцию по ссылке ниже.";img.insertAdjacentElement("afterend",note);},{once:true});
+  });
+}
+function renderAll(){renderHeader();renderToday();renderPlan();renderHistory();renderSettings();renderTechnique();}
 
 // Navigation
  document.querySelectorAll(".nav-item").forEach(b=>b.addEventListener("click",()=>switchScreen(b.dataset.screen)));
@@ -120,9 +236,19 @@ $("openGuideBtn").addEventListener("click",openGuide);$("closeGuide").addEventLi
 $("guideStart").addEventListener("click",startGuideTimer);$("guidePrev").addEventListener("click",()=>{stopGuideTimer();guideIndex=Math.max(0,guideIndex-1);showGuideStep();});$("guideNext").addEventListener("click",()=>{stopGuideTimer();if(guideIndex<guideSteps.length-1){guideIndex++;showGuideStep();}else{$("guideDialog").close();showToast("Этапы пройдены. Отметь уход выполненным.");}});
 $("prevMonth").addEventListener("click",()=>{monthCursor=new Date(monthCursor.getFullYear(),monthCursor.getMonth()-1,1,12);renderMonth();});$("nextMonth").addEventListener("click",()=>{monthCursor=new Date(monthCursor.getFullYear(),monthCursor.getMonth()+1,1,12);renderMonth();});
 document.querySelectorAll("#feelingOptions button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll("#feelingOptions button").forEach(x=>x.classList.remove("active"));b.classList.add("active");}));$("saveNoteBtn").addEventListener("click",saveHistoryNote);
+$("saveVideoUrlBtn").addEventListener("click",()=>{
+  const raw=$("hostedVideoUrl").value.trim();
+  if(!raw){data.videoUrl="";persist();renderTechnique();$("videoUrlStatus").textContent="Ссылка удалена.";showToast("Ссылка на видео удалена");return;}
+  if(!parseHostedVideo(raw)){$("videoUrlStatus").textContent="Нужна корректная публичная HTTPS-ссылка. Проверь адрес и доступность видео.";showToast("Ссылка не сохранена");return;}
+  data.videoUrl=raw;persist();renderTechnique();$("videoUrlStatus").textContent="Ссылка сохранена. Открой раздел «Техника», чтобы проверить воспроизведение.";showToast("Ссылка на видео сохранена");
+});
+$("clearVideoUrlBtn").addEventListener("click",()=>{data.videoUrl="";persist();$("hostedVideoUrl").value="";$("videoUrlStatus").textContent="Ссылка удалена.";renderTechnique();showToast("Пользовательское видео удалено");});
 $("restorePlanBtn").addEventListener("click",()=>{if(confirm("Вернуть исходный недельный план?")){data.plan=clone(DEFAULT_PLAN);persist();renderPlan();renderToday();showToast("Исходный план восстановлен");}});
 $("reminderTime").addEventListener("change",e=>{data.time=e.target.value||"21:00";persist();renderToday();renderPlan();scheduleReminderCheck();showToast("Время напоминания сохранено");});$("calendarExportBtn").addEventListener("click",exportCalendar);$("permissionBtn").addEventListener("click",requestNotifications);
 $("saveGoalBtn").addEventListener("click",()=>{data.goal={name:$("goalName").value.trim(),date:$("goalDate").value};persist();renderGoalCard();showToast("Цель сохранена");});$("backupBtn").addEventListener("click",backupData);$("importBtn").addEventListener("click",()=>$("importFile").click());$("importFile").addEventListener("change",e=>{const f=e.target.files?.[0];if(f)importData(f);e.target.value="";});
+
+document.addEventListener("visibilitychange",()=>{if(guideRunning)tickGuideTimer();if(document.visibilityState==="visible")renderHeader();});
+let lastDailyHeaderDate=localDateKey(new Date());setInterval(()=>{const today=localDateKey(new Date());if(today!==lastDailyHeaderDate){lastDailyHeaderDate=today;renderHeader();}},60000);
 
 if("serviceWorker" in navigator&&location.protocol!=="file:"){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").then(()=>scheduleReminderCheck()).catch(err=>{console.warn("Service worker registration failed",err);scheduleReminderCheck();}));}else scheduleReminderCheck();
 renderAll();

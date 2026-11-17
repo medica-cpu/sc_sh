@@ -16,14 +16,14 @@
 <body>
   <header class="app-header">
     <div class="brand-mark">✧</div>
-    <div class="brand-copy"><span class="eyebrow">MY BEAUTY ROUTINE</span><strong>Мой уход</strong></div>
+    <div class="brand-copy"><strong id="dailyCompliment">Ты заслуживаешь заботы и красивых моментов каждый день.</strong></div>
     <button class="header-date" id="headerDate" type="button" aria-label="Перейти к сегодняшнему дню"></button>
   </header>
 
   <main class="app-main">
     <section class="screen active" id="screen-today" aria-labelledby="todayHeading">
       <div class="intro-row">
-        <div><span class="eyebrow">TODAY'S CARE</span><h1 id="todayHeading">Твой уход на сегодня</h1><p class="muted" id="todayDate"></p></div>
+        <div><h1 id="todayHeading">Твой уход на сегодня</h1><p class="muted" id="todayDate"></p></div>
         <span class="device-chip">EH-SR90</span>
       </div>
       <div class="week-strip" id="weekStrip" aria-label="Дни недели"></div>
@@ -71,6 +71,127 @@
       <div class="chart-card"><div><span class="eyebrow">РЕГУЛЯРНОСТЬ</span><h2>Последние 7 дней</h2></div><div class="bars" id="weekBars"></div><p class="small muted">Показывает только отметки выполнения, а не медицинские изменения кожи.</p></div>
     </section>
 
+    <section class="screen" id="screen-technique" aria-labelledby="techniqueHeading">
+      <div class="page-heading"><span class="eyebrow">PANASONIC OFFICIAL GUIDE</span><h1 id="techniqueHeading">Техника использования</h1><p class="muted">Официальное видео, схемы движений и порядок применения для EH-SR90.</p></div>
+
+      <article class="video-feature hosted-video-feature" id="hostedVideoCard" hidden>
+        <div class="video-copy"><span class="eyebrow">ТВОЁ ВИДЕО</span><h2>Видео, размещённое тобой</h2><p class="muted">Пользовательская ссылка из настроек. Доступность встроенного просмотра зависит от формата и настроек видеохостинга.</p></div>
+        <div id="hostedVideoContent"></div>
+      </article>
+
+      <article class="video-feature">
+        <a class="video-thumb" href="https://www.youtube.com/watch?v=pApKQhiECxM" target="_blank" rel="noopener noreferrer" aria-label="Открыть официальное видео Panasonic на YouTube">
+          <img src="https://img.youtube.com/vi/pApKQhiECxM/hqdefault.jpg" alt="Превью официального видео Panasonic EH-SR90" loading="lazy">
+          <span class="play-button">▶</span>
+        </a>
+        <div class="video-copy"><span class="eyebrow">ВИДЕО PANASONIC</span><h2>Как пользоваться VITALIFT RF LUXE EH-SR90</h2><p class="muted">Официальное видео Panasonic Japan. Язык — японский. Показывает основные действия с прибором и уход после использования.</p><a class="official-link" href="https://www.youtube.com/watch?v=pApKQhiECxM" target="_blank" rel="noopener noreferrer">Смотреть оригинал на YouTube ↗</a></div>
+      </article>
+
+      <div class="tech-info-card"><strong>Общие правила для всех режимов</strong><ul>
+        <li>Работай по одной половине лица за раз. Звуковой сигнал в середине процедуры подсказывает перейти на другую половину.</li>
+        <li>Держи прибор так, чтобы ладонь касалась задней ионной панели. Вся поверхность головки должна прилегать к коже.</li>
+        <li>Постоянно перемещай головку: не задерживай её на одном месте и не прижимай сильно.</li>
+        <li>На щеках и линии нижней челюсти используй плоскую часть головки; двигай её медленно вверх, не наклоняя головку.</li>
+      </ul><a class="official-link" href="https://panasonic.jp/face/products/EH-SR90/feature/instruction.html" target="_blank" rel="noopener noreferrer">Полная инструкция Panasonic EH-SR90 ↗</a></div>
+
+      <div class="technique-list">
+        <details class="technique-card" open>
+          <summary><span class="technique-icon rf-icon">RF</span><span class="technique-title"><strong>RF × EMS LIFT</strong><small>Около 6 минут · схема ①–⑩</small></span><span class="chevron">⌄</span></summary>
+          <div class="technique-body">
+            <div class="mode-video" data-video-id="lu-eWTsOrSM" data-video-title="RF × EMS LIFT">
+              <div class="mode-video-preview">
+                <img src="https://img.youtube.com/vi/lu-eWTsOrSM/hqdefault.jpg" alt="Превью видео: RF × EMS LIFT" loading="lazy">
+                <button class="mode-video-open" type="button">▶ Смотреть видео</button>
+              </div>
+              <p class="mode-video-fallback small muted">Видео будет воспроизводиться внутри приложения. При ограничениях YouTube можно <a href="https://www.youtube.com/watch?v=lu-eWTsOrSM" target="_blank" rel="noopener noreferrer">открыть ролик на YouTube ↗</a>.</p>
+            </div>
+            <img class="movement-diagram" src="https://panasonic.jp/content/panasonic/jp/ja/face/products/EH-SR90/feature/instruction/_jcr_content/root/main/componentContainer1/c_lay001_copy_copy_c_769664272/item/c_lay002/c_gen003.coreimg.jpeg/1788851109312/eh-sr90-instruction-10-pc.jpeg" alt="Официальная схема Panasonic: десять движений RF × EMS LIFT и RF PUMP" loading="lazy">
+            <p class="image-credit">Схема движения: Panasonic, инструкция EH-SR90.</p>
+            <div class="tech-badge-row"><span>①–⑦: примерно 7 секунд на стрелку</span><span>⑧–⑩: примерно 3 секунды на стрелку</span></div>
+            <ol><li>После лосьона нанеси специальный гель EH-4R06 или другое подходящее косметическое средство. Ориентир для специального геля — 1–2 г.</li><li>Выбери RF × EMS LIFT и уровень EMS. При первом использовании начни с уровня 1.</li><li>Веди головку медленно, подтягивая вверх, строго по номерам ①–⑩. Не повторяй один номер вместо полной последовательности.</li><li>Выполни половину лица, затем по звуковому сигналу перейди на другую. Держи головку всей плоскостью у кожи и не останавливайся на месте.</li></ol>
+            <p class="small muted">Panasonic рекомендует специальный гель, чтобы EMS лучше передавался коже. Если средство подсыхает, добавь его. Не используй масло как контактную среду.</p>
+            <a class="official-link" href="https://panasonic.jp/face/products/EH-SR90/feature/instruction.html" target="_blank" rel="noopener noreferrer">Источник Panasonic · RF × EMS LIFT ↗</a>
+          </div>
+        </details>
+
+        <details class="technique-card">
+          <summary><span class="technique-icon rf-icon">RF</span><span class="technique-title"><strong>RF PUMP</strong><small>Около 6 минут · схема ①–⑩</small></span><span class="chevron">⌄</span></summary>
+          <div class="technique-body">
+            <div class="mode-video" data-video-id="lu-eWTsOrSM" data-video-title="RF PUMP">
+              <div class="mode-video-preview">
+                <img src="https://img.youtube.com/vi/lu-eWTsOrSM/hqdefault.jpg" alt="Превью видео: RF PUMP" loading="lazy">
+                <button class="mode-video-open" type="button">▶ Смотреть видео</button>
+              </div>
+              <p class="mode-video-fallback small muted">Видео будет воспроизводиться внутри приложения. При ограничениях YouTube можно <a href="https://www.youtube.com/watch?v=lu-eWTsOrSM" target="_blank" rel="noopener noreferrer">открыть ролик на YouTube ↗</a>.</p>
+            </div>
+            <img class="movement-diagram" src="https://panasonic.jp/content/panasonic/jp/ja/face/products/EH-SR90/feature/instruction/_jcr_content/root/main/componentContainer1/c_lay001_copy_copy_c_769664272/item/c_lay002/c_gen003.coreimg.jpeg/1788851109312/eh-sr90-instruction-10-pc.jpeg" alt="Официальная схема Panasonic движений RF PUMP" loading="lazy">
+            <p class="image-credit">Для RF PUMP Panasonic показывает ту же схему движения, что и для RF × EMS LIFT.</p>
+            <div class="tech-badge-row"><span>①–⑦: примерно 7 секунд</span><span>⑧–⑩: примерно 3 секунды</span></div>
+            <ol><li>Нанеси сыворотку или эмульсию, как указано в схеме Panasonic для RF PUMP.</li><li>Выбери RF PUMP и уровень RF.</li><li>Веди головку медленно вверх, последовательно по стрелкам ①–⑩.</li><li>Работай по половинам лица, ориентируясь на звуковой сигнал в середине процедуры.</li></ol>
+            <p class="small muted">Не заменяй средство для RF PUMP гелем EH-4R06 автоматически: следуй именно схеме этого режима.</p>
+            <a class="official-link" href="https://panasonic.jp/face/products/EH-SR90/feature/instruction.html" target="_blank" rel="noopener noreferrer">Источник Panasonic · RF PUMP ↗</a>
+          </div>
+        </details>
+
+        <details class="technique-card">
+          <summary><span class="technique-icon eye-icon">◉</span><span class="technique-title"><strong>EYE CARE</strong><small>Около 2 минут · примерно 5 секунд на стрелку</small></span><span class="chevron">⌄</span></summary>
+          <div class="technique-body">
+            <div class="mode-video" data-video-id="LYwSrkOKfEo" data-video-title="EYE CARE">
+              <div class="mode-video-preview">
+                <img src="https://img.youtube.com/vi/LYwSrkOKfEo/hqdefault.jpg" alt="Превью видео: EYE CARE" loading="lazy">
+                <button class="mode-video-open" type="button">▶ Смотреть видео</button>
+              </div>
+              <p class="mode-video-fallback small muted">Видео будет воспроизводиться внутри приложения. При ограничениях YouTube можно <a href="https://www.youtube.com/watch?v=LYwSrkOKfEo" target="_blank" rel="noopener noreferrer">открыть ролик на YouTube ↗</a>.</p>
+            </div>
+            <img class="movement-diagram eye-diagram" src="https://panasonic.jp/content/panasonic/jp/ja/face/products/EH-SR90/feature/instruction/_jcr_content/root/main/componentContainer1/c_lay001_434717760_c_736355694/c_lay011_copy_copy/c_gen003_copy.coreimg.jpeg/1788851109611/eh-sr90-instruction-12.jpeg" alt="Официальная схема Panasonic движений режима EYE CARE" loading="lazy">
+            <p class="image-credit">Схема движения: Panasonic, инструкция EH-SR90.</p>
+            <ol><li>Нанеси сыворотку, эмульсию или крем для глаз, который допускает использование в этой зоне.</li><li>Выбери EYE CARE и уровень ионного режима.</li><li>Перемещай головку по направлению стрелки, примерно по 5 секунд на одно движение, без сильного нажима.</li><li>Не обрабатывай веки. Соблюдай границы зоны, показанные на официальной схеме.</li></ol>
+            <a class="official-link" href="https://panasonic.jp/face/products/EH-SR90/feature/instruction.html" target="_blank" rel="noopener noreferrer">Источник Panasonic · EYE CARE ↗</a>
+          </div>
+        </details>
+
+        <details class="technique-card">
+          <summary><span class="technique-icon clean-icon">C</span><span class="technique-title"><strong>CLEAN</strong><small>Около 3 минут · схема ①–⑧</small></span><span class="chevron">⌄</span></summary>
+          <div class="technique-body">
+            <div class="mode-video" data-video-id="t9wMeb0W9OE" data-video-title="CLEAN">
+              <div class="mode-video-preview">
+                <img src="https://img.youtube.com/vi/t9wMeb0W9OE/hqdefault.jpg" alt="Превью видео: CLEAN" loading="lazy">
+                <button class="mode-video-open" type="button">▶ Смотреть видео</button>
+              </div>
+              <p class="mode-video-fallback small muted">Видео будет воспроизводиться внутри приложения. При ограничениях YouTube можно <a href="https://www.youtube.com/watch?v=t9wMeb0W9OE" target="_blank" rel="noopener noreferrer">открыть ролик на YouTube ↗</a>.</p>
+            </div>
+            <img class="movement-diagram" src="https://panasonic.jp/content/panasonic/jp/ja/face/products/EH-SR90/feature/instruction/_jcr_content/root/main/componentContainer1/c_lay001_copy_copy_c_1015604646/item/c_lay002/c_gen003.coreimg.jpeg/1788851110127/eh-sr90-instruction-15-pc.jpeg" alt="Официальная схема Panasonic движений режима CLEAN" loading="lazy">
+            <p class="image-credit">Схема движения: Panasonic, инструкция EH-SR90.</p>
+            <div class="tech-badge-row"><span>①–③: примерно 7 секунд</span><span>④: примерно 5 секунд</span><span>⑤–⑧: примерно 3 секунды</span></div>
+            <ol><li>Закрепи косметический ватный диск на головке с помощью кольца так, чтобы он держался ровно.</li><li>Хорошо пропитай диск лосьоном: Panasonic указывает, что жидкость должна пройти до обратной стороны диска.</li><li>Выбери CLEAN и уровень ионного режима.</li><li>Перемещай прибор по последовательности ①–⑧. Не повторяй одну точку или номер вместо всей последовательности.</li></ol>
+            <a class="official-link" href="https://panasonic.jp/face/products/EH-SR90/feature/instruction.html" target="_blank" rel="noopener noreferrer">Источник Panasonic · CLEAN ↗</a>
+          </div>
+        </details>
+
+        <details class="technique-card">
+          <summary><span class="technique-icon moist-icon">M</span><span class="technique-title"><strong>MOIST</strong><small>Около 3 минут · схема ①–⑦</small></span><span class="chevron">⌄</span></summary>
+          <div class="technique-body">
+            <div class="mode-video" data-video-id="LFQz4_ZYW4g" data-video-title="MOIST">
+              <div class="mode-video-preview">
+                <img src="https://img.youtube.com/vi/LFQz4_ZYW4g/hqdefault.jpg" alt="Превью видео: MOIST" loading="lazy">
+                <button class="mode-video-open" type="button">▶ Смотреть видео</button>
+              </div>
+              <p class="mode-video-fallback small muted">Видео будет воспроизводиться внутри приложения. При ограничениях YouTube можно <a href="https://www.youtube.com/watch?v=LFQz4_ZYW4g" target="_blank" rel="noopener noreferrer">открыть ролик на YouTube ↗</a>.</p>
+            </div>
+            <img class="movement-diagram" src="https://panasonic.jp/content/panasonic/jp/ja/face/products/EH-SR90/feature/instruction/_jcr_content/root/main/componentContainer1/c_lay001_434717760_c_1195758699/c_lay011_copy_copy/c_gen003_copy.coreimg.jpeg/1788851110423/eh-sr90-instruction-17.jpeg" alt="Официальная схема Panasonic движений режима MOIST" loading="lazy">
+            <p class="image-credit">Схема движения: Panasonic, инструкция EH-SR90.</p>
+            <div class="tech-badge-row"><span>①–③: примерно 7 секунд</span><span>④–⑦: примерно 3 секунды</span></div>
+            <ol><li>Нанеси сыворотку или эмульсию.</li><li>Выбери MOIST и уровень ионного режима.</li><li>Выполни движения по порядку ①–⑦, как показано на официальной схеме.</li><li>После прибора нанеси завершающий уход.</li></ol>
+            <a class="official-link" href="https://panasonic.jp/face/products/EH-SR90/feature/instruction.html" target="_blank" rel="noopener noreferrer">Источник Panasonic · MOIST ↗</a>
+          </div>
+        </details>
+      </div>
+
+      <div class="tech-info-card"><strong>После процедуры</strong><p class="muted">Выключи прибор. Головку и кольцо промой от остатков геля и косметики, вытри насухо и дай полностью высохнуть. Не погружай корпус прибора в воду.</p><a class="official-link" href="https://panasonic.jp/face/products/EH-SR90/feature/instruction.html" target="_blank" rel="noopener noreferrer">Подробности и противопоказания в инструкции Panasonic ↗</a></div>
+      <div class="app-video-note"><strong>Дополнительные видео по отдельным режимам</strong><p class="muted">В официальном приложении with Panasonic Beauty Panasonic предлагает видео- и звуковые подсказки по движениям прибора. Доступность функций зависит от региона и совместимости телефона.</p><a class="official-link" href="https://panasonic.jp/face/app/with-pb.html" target="_blank" rel="noopener noreferrer">with Panasonic Beauty · сайт Panasonic ↗</a></div>
+      <p class="small muted">Все схемы выше загружаются с официальной страницы Panasonic. При отсутствии интернета открой полную инструкцию по ссылке выше. Это независимое приложение, не разработанное Panasonic.</p>
+    </section>
+
     <section class="screen" id="screen-settings" aria-labelledby="settingsHeading">
       <div class="page-heading"><span class="eyebrow">PREFERENCES</span><h1 id="settingsHeading">Настройки</h1><p class="muted">Время, напоминания и твои средства.</p></div>
       <div class="settings-card">
@@ -92,6 +213,14 @@
       </div>
 
       <div class="settings-card">
+        <span class="eyebrow">ОБУЧАЮЩЕЕ ВИДЕО</span><h2>Ссылка на загруженный ролик</h2>
+        <p class="small muted">Когда разместишь видео на выбранном видеохостинге, вставь сюда публичную HTTPS-ссылку. Прямая ссылка на MP4 или M3U8 откроется во встроенном плеере. YouTube, Rutube и Vimeo поддерживаются для встроенного просмотра; страница других площадок откроется по ссылке. Сам видеофайл приложение не загружает и не хранит.</p>
+        <label class="field-label" for="hostedVideoUrl">Публичная ссылка на видео</label><input id="hostedVideoUrl" type="url" inputmode="url" autocomplete="url" placeholder="https://…">
+        <div class="data-actions"><button class="primary-button" id="saveVideoUrlBtn" type="button">Сохранить ссылку</button><button class="secondary-button" id="clearVideoUrlBtn" type="button">Удалить ссылку</button></div>
+        <p class="small muted" id="videoUrlStatus" role="status"></p>
+      </div>
+
+      <div class="settings-card">
         <span class="eyebrow">МОЯ ЦЕЛЬ</span><h2>Важная дата</h2>
         <label class="field-label" for="goalName">Название события</label><input id="goalName" type="text" maxlength="50" placeholder="Например, отпуск">
         <label class="field-label" for="goalDate">Дата события</label><input id="goalDate" type="date">
@@ -110,16 +239,18 @@
   </main>
 
   <nav class="bottom-nav" aria-label="Основная навигация">
-    <button class="nav-item active" data-screen="today" type="button"><span class="nav-icon">⌂</span><span>Сегодня</span></button>
-    <button class="nav-item" data-screen="plan" type="button"><span class="nav-icon">▦</span><span>План</span></button>
-    <button class="nav-item" data-screen="history" type="button"><span class="nav-icon">◷</span><span>История</span></button>
-    <button class="nav-item" data-screen="settings" type="button"><span class="nav-icon">⚙</span><span>Настройки</span></button>
+    <button class="nav-item active" data-screen="today" type="button" aria-label="Сегодня"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3.5 10.5 8.5-7 8.5 7"/><path d="M5.5 9.5v11h13v-11M9.5 20.5v-7h5v7"/></svg></span><span>Сегодня</span></button>
+    <button class="nav-item" data-screen="plan" type="button" aria-label="План"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="4" width="17" height="16" rx="2.5"/><path d="M8 4v16M14 4v16M3.5 9.3h17M3.5 14.6h17"/></svg></span><span>План</span></button>
+    <button class="nav-item" data-screen="history" type="button" aria-label="История"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5.2l3.5 2"/></svg></span><span>История</span></button>
+    <button class="nav-item" data-screen="technique" type="button" aria-label="Техника"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h6.5a3 3 0 0 1 3 3v10H7a3 3 0 0 0-3 2z"/><path d="M20 5.5h-6.5a3 3 0 0 0-3 3v10H17a3 3 0 0 1 3 2z"/><path d="M7 9h2M15 9h2"/></svg></span><span>Техника</span></button>
+    <button class="nav-item" data-screen="settings" type="button" aria-label="Настройки"><span class="nav-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 2.8h4l.7 2.1a7.7 7.7 0 0 1 1.5.9l2.1-.5 2 3.5-1.5 1.6a8 8 0 0 1 0 1.8l1.5 1.6-2 3.5-2.1-.5a7.7 7.7 0 0 1-1.5.9l-.7 2.1h-4l-.7-2.1a7.7 7.7 0 0 1-1.5-.9l-2.1.5-2-3.5 1.5-1.6a8 8 0 0 1 0-1.8L3.7 8.8l2-3.5 2.1.5a7.7 7.7 0 0 1 1.5-.9z"/><circle cx="12" cy="11.3" r="3"/></svg></span><span>Настройки</span></button>
   </nav>
 
   <dialog id="guideDialog" class="guide-dialog">
     <div class="dialog-top"><span class="eyebrow">GUIDED CARE</span><button id="closeGuide" class="close-button" type="button" aria-label="Закрыть">×</button></div>
     <div class="guide-count" id="guideCount">ЭТАП 1 ИЗ 5</div><h2 id="guideTitle">Подготовка кожи</h2><p id="guideDescription" class="muted"></p>
-    <div class="guide-timer" id="guideTimer">03:00</div>
+    <div class="guide-timer-caption" id="guideTimerCaption">ОБЩАЯ ДЛИТЕЛЬНОСТЬ РЕЖИМА</div><div class="guide-timer" id="guideTimer">03:00</div>
+    <div class="guide-movement-pace" id="guideMovementPace" hidden><strong>Темп отдельных движений</strong><p id="guideMovementPaceText"></p></div>
     <div class="guide-controls"><button class="secondary-button" id="guidePrev" type="button">Назад</button><button class="primary-button" id="guideStart" type="button">Старт таймера</button><button class="secondary-button" id="guideNext" type="button">Далее</button></div>
     <p class="small muted guide-hint" id="guideHint"></p>
   </dialog>

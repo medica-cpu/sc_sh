@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Мой уход — Panasonic EH-SR90",
-  "short_name": "Мой уход",
+  "name": "Ежедневный уход — Panasonic EH-SR90",
+  "short_name": "Уход",
   "lang": "ru",
   "start_url": "./",
   "scope": "./",
@@ -9,7 +9,7 @@
   "orientation": "portrait",
   "background_color": "#f3ede6",
   "theme_color": "#f3ede6",
-  "description": "Персональный недельный планировщик процедур Panasonic EH-SR90",
+  "description": "Личный планировщик ухода Panasonic EH-SR90 с ежедневным комплиментом, таймерами и техникой движений.",
   "icons": [
     {
       "src": "icon-192.png",
