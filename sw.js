@@ -1,13 +1,18 @@
-const CACHE_NAME = "ehsr90-pwa-v15";
+const CACHE_NAME = "ehsr90-pwa-v16";
 const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./styles.css?v=15",
-  "./app.js?v=15",
-  "./media.js?v=15",
-  "./manifest.webmanifest?v=15",
+  "./styles.css?v=16",
+  "./app.js?v=16",
+  "./media.js?v=16",
+  "./manifest.webmanifest?v=16",
   "./icon-192.png",
-  "./icon-512.png"
+  "./icon-512.png",
+  "./assets/cleaning-01-head.jpg",
+  "./assets/cleaning-02-ring.jpg",
+  "./assets/cleaning-03-wipe.jpg",
+  "./assets/cleaning-04-dry.jpg",
+  "./assets/cleaning-05-ready.jpg"
 ];
 self.addEventListener("install", event => {
   event.waitUntil(

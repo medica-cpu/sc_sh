@@ -8,9 +8,9 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Мой уход">
   <meta name="description" content="Персональный планировщик процедур Panasonic EH-SR90">
-  <link rel="manifest" href="./manifest.webmanifest?v=15">
+  <link rel="manifest" href="./manifest.webmanifest?v=16">
   <link rel="apple-touch-icon" href="./icon-192.png">
-  <link rel="stylesheet" href="./styles.css?v=15">
+  <link rel="stylesheet" href="./styles.css?v=16">
   <title>Мой уход · EH-SR90</title>
 </head>
 <body>
@@ -78,7 +78,7 @@
         <p class="small muted" id="noteStatus" role="status"></p>
       </div>
       <div class="stats-grid" id="historyStats"></div>
-      <div class="chart-card"><h2>Регулярность за 7 дней</h2><div class="bars" id="weekBars"></div><p class="small muted">График показывает только сохранённые отметки выполнения.</p></div>
+      <div class="chart-card"><h2>Регулярность за 7 дней</h2><div class="bars" id="weekBars"></div><p class="small muted" id="weekCompletionSummary">Процент рассчитывается по отмеченным этапам каждого дня.</p></div>
     </section>
 
     <!-- TECHNIQUE -->
@@ -172,7 +172,7 @@
 
   <!-- Device cleaning slider -->
   <dialog id="cleanDialog" class="app-dialog gallery-dialog">
-    <div class="dialog-top"><div><span class="eyebrow">УХОД ЗА ПРИБОРОМ</span><div class="guide-count" id="cleanCount">СЛАЙД 1 ИЗ 2</div></div><button class="close-button" id="closeClean" type="button" aria-label="Закрыть">×</button></div>
+    <div class="dialog-top"><div><span class="eyebrow">ОЧИСТКА</span><div class="guide-count" id="cleanCount">СЛАЙД 1 ИЗ 5</div></div><button class="close-button" id="closeClean" type="button" aria-label="Закрыть">×</button></div>
     <h2 id="cleanTitle">Промой головку и кольцо</h2>
     <div class="gallery-image-wrap clean-image-wrap"><img id="cleanImage" alt="Инструкция по очистке Panasonic EH-SR90"></div>
     <div class="gallery-caption clean-caption" id="cleanCaption"></div>
@@ -180,7 +180,7 @@
   </dialog>
 
   <div class="toast" id="toast" role="status"></div>
-  <script src="./media.js?v=15"></script>
-  <script src="./app.js?v=15"></script>
+  <script src="./media.js?v=16"></script>
+  <script src="./app.js?v=16"></script>
 </body>
 </html>
